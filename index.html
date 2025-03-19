@@ -6,6 +6,79 @@
     </head>
     <body>    
         <h1>Hello, World!</h1>
-            <p>Welcome to my simple website powered by Docker!</p>
-        </body>
+        <p>Welcome to my simple website powered by Docker!</p>
+
+        <h2>Конечно! Давайте разберём, как с помощью Docker можно создать простой веб-сайт.</h2>
+        <p>Представьте, что Docker — это как коробка, в которую вы можете положить всё, что нужно вашему сайту, чтобы он работал, и эта коробка будет одинаково работать на любом компьютере.</p>
+
+        <h3>Вот шаги, чтобы создать простой веб-сайт с помощью Docker:</h3>
+
+        <ol>
+            <li><strong>Установите Docker</strong>:
+                <ul>
+                    <li>Сначала нужно установить Docker на ваш компьютер. Это можно сделать, скачав Docker Desktop с официального сайта Docker.</li>
+                </ul>
+            </li>
+            <li><strong>Создайте папку для вашего проекта</strong>:
+                <ul>
+                    <li>Создайте новую папку на вашем компьютере, например, <code>my-website</code>.</li>
+                </ul>
+            </li>
+            <li><strong>Создайте HTML файл</strong>:
+                <ul>
+                    <li>Внутри папки <code>my-website</code> создайте файл <code>index.html</code>. Это будет ваш веб-сайт. Например, в <code>index.html</code> можно написать:
+                        <pre><code>
+&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+&lt;head&gt;
+    &lt;meta charset="UTF-8"&gt;
+    &lt;title&gt;My Simple Website&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;h1&gt;Hello, World!&lt;/h1&gt;
+    &lt;p&gt;Welcome to my simple website powered by Docker!&lt;/p&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+                        </code></pre>
+                    </li>
+                </ul>
+            </li>
+            <li><strong>Создайте Dockerfile</strong>:
+                <ul>
+                    <li>В той же папке <code>my-website</code> создайте файл с именем <code>Dockerfile</code> (без расширения). В этом файле напишите:
+                        <pre><code>
+FROM httpd:2.4
+COPY ./index.html /usr/local/apache2/htdocs/
+                        </code></pre>
+                    </li>
+                    <li>Это говорит Docker использовать образ Apache (это программа, которая показывает ваш сайт) и скопировать ваш <code>index.html</code> в нужное место.</li>
+                </ul>
+            </li>
+            <li><strong>Постройте Docker образ</strong>:
+                <ul>
+                    <li>Откройте терминал (или командную строку) и перейдите в папку <code>my-website</code>.</li>
+                    <li>Введите команду:
+                        <pre><code>
+docker build -t my-simple-website .
+                        </code></pre>
+                    </li>
+                    <li>Эта команда создаст Docker образ с вашим сайтом.</li>
+                </ul>
+            </li>
+            <li><strong>Запустите контейнер</strong>:
+                <ul>
+                    <li>Теперь, чтобы увидеть ваш сайт в действии, введите команду:
+                        <pre><code>
+docker run -d -p 8080:80 my-simple-website
+                        </code></pre>
+                    </li>
+                    <li>Эта команда запустит ваш сайт в контейнере и сделает его доступным на вашем компьютере по адресу <a href="http://localhost:8080" target="_blank">http://localhost:8080</a>.</li>
+                </ul>
+            </li>
+        </ol>
+
+        <p>Теперь, открыв браузер и перейдя по адресу <a href="http://localhost:8080" target="_blank">http://localhost:8080</a>, вы увидите ваш простой веб-сайт!</p>
+
+        <p>Docker позволяет легко упаковать и запустить ваш сайт, не беспокоясь о том, как он будет работать на других компьютерах. Это как магическая коробка, которая всегда работает одинаково!</p>
+    </body>
 </html>
